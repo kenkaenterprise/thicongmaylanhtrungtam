@@ -1,0 +1,21 @@
+{
+    "name": "vhphan/phangia",
+    "description": "Ural Theme",
+    "type": "wp-theme",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Phangia\\App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Hoang Phan",
+            "email": "hoang.phan@wundermanthompson.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "timber/timber": "1.*"
+    }
+}

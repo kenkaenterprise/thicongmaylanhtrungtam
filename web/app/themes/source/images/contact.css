@@ -1,0 +1,13 @@
+@charset "utf-8";
+.contact-tit {
+  margin: 0;
+  font-weight: 400;
+  color: #333333;
+  font-size: 22px;
+  border-bottom: 1px solid #ebebeb;
+  padding: 20px 0;
+  margin-bottom: 20px;
+}
+
+.contact-desc {
+}

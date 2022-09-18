@@ -1,0 +1,10 @@
+{% for item in settings %}
+<tr valign="top">
+    <th scope="row">{{ item.name }}</th>
+    <td>
+        <input id="{{ item.name }}" type="text" name="{{ item.name }}" value="{% if theme_options[item.name] %}{{ theme_options[item.name] }}{% endif %}" /><br />
+        <p class="description">{{ item.description }}</p>
+
+    </td>
+</tr>
+{% endfor %}

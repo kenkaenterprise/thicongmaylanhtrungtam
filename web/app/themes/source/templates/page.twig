@@ -1,0 +1,14 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    <section id="main" class="container">
+        <div class="main-container clearfix">
+            <div class="">
+                <h2 class="main-title">{{ post.name }}</h2>
+                <div class="content">
+                    {{ post.content }}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

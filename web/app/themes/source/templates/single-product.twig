@@ -1,0 +1,108 @@
+{% extends 'single.twig' %}
+
+{% block content %}
+    <div class="clearfix " id="detail_page">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="product-pic ">
+                    <div class="app-figure" id="zoom-fig">
+                        <div class="zoom-wrap">
+                            <a id="Zoom-1" class="MagicZoom" title="{{ post.name }}" href="{{ post.thumbnail.src }}"	data-options="zoomMode:off;">
+                                <img src="{{ post.thumbnail.src?: 'https://via.placeholder.com/585x400' }}" alt="{{ post.name }}"/>
+                            </a>
+                        </div>
+                        <div class="zoom-hinhcon clearfix" style="display: none">
+                            <div class="hinhcon">
+                                <a data-zoom-id="Zoom-1" href="{{ post.thumbnail.src }}" data-image="{{ post.thumbnail.src|resize(500,342) }}" >
+                                    <img src="{{ post.thumbnail.src|resize(300,205) }}" alt="{{ post.name }}" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="product-title">
+
+                    <h1>{{ post.name }}</h1>
+
+
+                </div>
+                <p class="giaca">Giá: <strong>{{ post.price ?: 'Liên hệ' }}</strong></p>
+                <p class="detail-info clearfix">
+
+                    <span><i>Tình trạng: </i> {{ post.stock_status?: 'Chưa cập nhật' }}</span>
+                    {#@todo: create page /thuong-hieu/may-lanh-sumikura #}
+                    <span><i>Thương hiệu: </i> <a href="">{{ post.brand?: 'Chưa cập nhật' }}</a></span>
+                </p>
+
+                {#@todo: block sharethis #}
+
+
+
+
+
+                <div class="short-description short-description panel panel-default">
+                    <div class="panel-body">
+                        {% if post.wattage %}
+                            <p style="box-sizing: border-box; margin: 0px 0px 10px; font-family: Roboto, sans-serif; font-size: 14px;"><span style="box-sizing: border-box; font-size: 18px;"><span style="box-sizing: border-box; font-family: &quot;times new roman&quot;, times, serif;"><span style="box-sizing: border-box; color: rgb(0, 0, 0);"><span font-size:="" new="" style="box-sizing: border-box;" times="">-Công suất : {{ post.wattage }}</span></span></span></span></p>
+                        {% endif %}
+
+                        {% if post.model_type %}
+                            <p style="box-sizing: border-box; margin: 0px 0px 10px; font-family: Roboto, sans-serif; font-size: 14px;"><span style="box-sizing: border-box; font-size: 18px;"><span style="box-sizing: border-box; font-family: &quot;times new roman&quot;, times, serif;"><span style="box-sizing: border-box; color: rgb(0, 0, 0);"><span new="" style="box-sizing: border-box;" times=""><span new="" style="box-sizing: border-box;" times=""><span new="" style="box-sizing: border-box;" times=""><span new="" style="box-sizing: border-box;" times="">-Loại máy : {{ post.type }}</span></span></span></span></span></span></span></p>
+                        {% endif %}
+
+                        {% if post.warranty %}
+                        <p style="box-sizing: border-box; margin: 0px 0px 10px; font-family: Roboto, sans-serif; font-size: 14px;"><span style="box-sizing: border-box; font-size: 18px;"><span style="box-sizing: border-box; font-family: &quot;times new roman&quot;, times, serif;"><span style="box-sizing: border-box; color: rgb(0, 0, 0);"><span new="" style="box-sizing: border-box;" times=""><span new="" style="box-sizing: border-box;" times=""><span new="" style="box-sizing: border-box;" times=""><span new="" style="box-sizing: border-box;" times=""><span new="" style="box-sizing: border-box;" times=""><span style="box-sizing: border-box;"><span new="" style="box-sizing: border-box;" times="">-Bảo hành :  {{ post.warranty }}</span></span></span></span></span></span></span></span></span></span></p>
+                        {% endif %}
+
+                        {% if post.fuel %}
+                            <p style="box-sizing: border-box; margin: 0px 0px 10px; font-family: Roboto, sans-serif; font-size: 14px;"><span style="box-sizing: border-box; font-size: 18px;"><span style="box-sizing: border-box; font-family: &quot;times new roman&quot;, times, serif;"><span style="box-sizing: border-box; color: rgb(0, 0, 0);"><span new="" style="box-sizing: border-box;" times=""><span new="" style="box-sizing: border-box;" times=""><span new="" style="box-sizing: border-box;" times=""><span new="" style="box-sizing: border-box;" times=""><span new="" style="box-sizing: border-box;" times=""><span style="box-sizing: border-box;"><span new="" style="box-sizing: border-box;" times="">-Sử dụng : {{ post.fuel }}</span></span></span></span></span></span></span></span></span></span></p>
+                        {% endif %}
+
+
+                        {% if post.source %}
+                        <p style="box-sizing: border-box; margin: 0px 0px 10px; font-family: Roboto, sans-serif; font-size: 14px;"><span style="box-sizing: border-box; font-size: 18px;"><span style="box-sizing: border-box; font-family: &quot;times new roman&quot;, times, serif;"><span style="box-sizing: border-box; color: rgb(0, 0, 0);"><span new="" style="box-sizing: border-box;" times=""><span new="" style="box-sizing: border-box;" times=""><span new="" style="box-sizing: border-box;" times=""><span new="" style="box-sizing: border-box;" times=""><span new="" style="box-sizing: border-box;" times=""><span style="box-sizing: border-box;"><span new="" style="box-sizing: border-box;" times="">-Xuất xứ : {{ post.source }}</span></span></span></span></span></span></span></span></span></span></p>
+                        {% endif %}
+
+                        <p class="other">{{ post.other|raw|nl2br }}</p>
+                    </div>
+                </div>
+
+
+
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+    <div class="tab-info">
+        <ul class="nav nav-pills text-uppercase">
+            <li class="active"><a data-toggle="pill" href="#home">Chi tiết</a></li>
+            <li><a data-toggle="pill" href="#menu1">Thông số kỹ thuật</a></li>
+            <li><a data-toggle="pill" href="#menu2">Bảo hành</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+                <div class="panel-body content clearfix table-responsive">
+                    <p>{{ post.detail|raw|nl2br ?: 'Nội dung chưa được cập nhật.' }}</p>
+                </div>
+            </div>
+            <div id="menu1" class="tab-pane fade">
+                <div class="panel-body content clearfix">
+                    <p>{{ post.tech_specification|raw|nl2br ?: 'Nội dung chưa được cập nhật.' }}</p>
+                </div>
+            </div>
+            <div id="menu2" class="tab-pane fade">
+                <div class="panel-body content clearfix">
+                    <p>{{ post.warranty_2|raw|nl2br ?: 'Nội dung chưa được cập nhật.' }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

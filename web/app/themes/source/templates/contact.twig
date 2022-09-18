@@ -1,0 +1,114 @@
+{% extends "page.twig" %}
+
+{% block content %}
+    <section id="main" class="container">
+        <div class="main-container clearfix">
+            <div class="">
+
+                <script src="{{ site.theme.link }}/images/my_script_check_form.js"></script>
+                <script src="{{ site.theme.link }}/images/jquery.validate.js"></script>
+                <link rel="stylesheet" href="{{ site.theme.link }}/images/contact.css" />
+                <script>
+
+                    $(document).ready(function() {
+                        $( "#frm" ).validate( {
+                            rules: {
+                                ten: "required",
+                                dienthoai: "required",
+                                noidung: "required",
+                                email: {
+                                    required: true,
+                                    email: true
+                                }
+                            },
+                            messages: {
+                                ten: "Vui lòng điền tên",
+                                dienthoai: "Vui lòng điền SĐT",
+                                noidung: "Xin điền nội dung",
+                                email: "Xin điền email đúng cú pháp"
+                            },
+                            errorElement: "em",
+                            errorPlacement: function ( error, element ) {
+                                // Add the `help-block` class to the error element
+                                error.addClass( "help-block" );
+
+                                if ( element.prop( "type" ) === "checkbox" ) {
+                                    error.insertAfter( element.parent( "label" ) );
+                                } else {
+                                    error.insertAfter( element );
+                                }
+                            },
+                            highlight: function ( element, errorClass, validClass ) {
+                                $( element ).parents( ".col-sm-5" ).addClass( "has-error" ).removeClass( "has-success" );
+                            },
+                            unhighlight: function (element, errorClass, validClass) {
+                                $( element ).parents( ".col-sm-5" ).addClass( "has-success" ).removeClass( "has-error" );
+                            }
+                        } );
+                    });
+                    function js_submit12(){
+                        if(isEmpty(document.getElementById('ten'), "Xin nhập Họ tên.")){
+                            document.getElementById('ten').focus();
+                            return false;
+                        }
+
+                        if(isEmpty(document.getElementById('dienthoai'), "Xin nhập Số điện thoại.")){
+                            document.getElementById('dienthoai').focus();
+                            return false;
+                        }
+
+                        if(!isNumber(document.getElementById('dienthoai'), "Số điện thoại không hợp lệ.")){
+                            document.getElementById('dienthoai').focus();
+                            return false;
+                        }
+
+                        if(!check_email(document.frm.email.value)){
+                            alert("Email không hợp lệ");
+                            document.frm.email.focus();
+                            return false;
+                        }
+
+
+                        if(isEmpty(document.getElementById('noidung'), "Xin nhập Nội dung.")){
+                            document.getElementById('noidung').focus();
+                            return false;
+                        }
+
+                        document.frm.submit();
+                    }
+                </script>
+
+                <div class="clearfix row">
+
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                        <h3 class="contact-tit">Thông Tin</h3>
+                        <p class="contact-desc">
+                           {{ post.guide }}</p>
+                        <form method="post" name="frm" id="frm" action="{{ site.url }}/lien-he.html" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="ten" name="ten" placeholder="Họ tên">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <input type="phone" class="form-control" id="dienthoai" name="dienthoai" placeholder="Điện Thoại ">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" rows="5" id="noidung" name="noidung" placeholder="Nội dung"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary " >Gửi liên hệ</button>
+
+
+                        </form>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                        <h3 class="contact-tit">Thông tin liên hệ</h3>
+                        <div class="contact-info">
+                            {% include 'partial/contact-info.twig' %}
+                        </div>
+                    </div>
+                </div>
+            </div>    </div>
+    </section>
+{% endblock %}

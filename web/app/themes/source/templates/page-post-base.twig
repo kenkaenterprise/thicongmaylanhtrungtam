@@ -1,0 +1,66 @@
+{% extends 'page.twig' %}
+
+{% block content %}
+    <section id="main" class="container">
+        <div class="main-container clearfix">
+            <div class="">
+                {% block page_title %}
+                    <h2 class="main-title"></h2>
+                {% endblock %}
+                <div class="d__fl--wrap ">
+                    {% if posts %}
+                        {% if posts.found_posts %}
+                            {% for item in posts %}
+                                <div class="news-item">
+                                    <div>
+                                        <figure class="img-thumbnail">
+                                            <img src="{{ item.thumbnail.src?:'https://via.placeholder.com/200x150' }}"
+                                                 alt="{{ item.name }}"/>
+                                        </figure>
+                                        <div class="info">
+                                            <h3 class="text-uppercase"><a
+                                                        href="{{ item.link }}">{{ item.name }}</a></h3>
+                                            <p class="post-date"><i class="fa fa-calendar-o" aria-hidden="true"></i> {{ item.date("d \d\e F") }}</p>
+                                            <p>{{ item.preview.length(21).force.read_more(false) }}</p>
+                                            <p class="readmore text-right"><a
+                                                        href="{{ item.link }}">Xem
+                                                    tiếp <i class="fa fa-angle-right" aria-hidden="true"></i></a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <p>Không tìm thấy bài viết.</p>
+                        {% endif %}
+                    {% endif %}
+                </div>
+                <div class="clear"></div>
+                <div class="paging">
+                    <div class="tool-pagination">
+                        <ul class="pagination2">
+                            {% if posts.pagination.prev %}
+                                <li>
+                                    <a href="{{posts.pagination.prev.link}}" class="prev {{posts.pagination.prev.link|length ? '' : 'invisible'}}">Trang trước</a>
+                                </li>
+                            {% endif %}
+                            {% for page in posts.pagination.pages %}
+                                <li>
+                                    {% if page.link %}
+                                        <a href="{{page.link}}" class="{{page.class}}">{{page.title}}</a>
+                                    {% else %}
+                                        <a class="current">{{page.title}}</a>
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                            {% if posts.pagination.next %}
+                            <li>
+                                <a href="{{posts.pagination.next.link}}" class="next {{posts.pagination.next.link|length ? '' : 'invisible'}}">Trang tiếp</a>
+                            </li>
+                        </ul>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

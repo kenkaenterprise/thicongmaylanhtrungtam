@@ -1,0 +1,36 @@
+<div class="container-fluid">
+    <div class="slider-container clearfix">
+        <div class="dmsp-panel d__fl--wrap">
+            {% if figures %}
+                {% for item in figures %}
+                    <figure>
+                        <a href="{{ item.content|striptags }}">
+                            <img class="border" src="{{ item.thumbnail.src?: 'https://via.placeholder.com/180x180' }}" alt="{{ item.name }}">
+                            <span class="figure-title">{{ item.name }}</span>
+                        </a>
+                    </figure>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div id="slideshow" class="">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    {% if sliders %}
+                        {% for item in sliders %}
+                            <div class="swiper-slide">
+                                <a href="{{ item|striptags }}" title="{{ item.name }}">
+                                    <span class="sl-image"></span>
+{#                                    <img class="slide-image" src="{{ item.thumbnail.src }}"#}
+{#                                         alt="{{ item.name }}" title="{{ item.name }}"/>#}
+                                </a>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <!-- Add Pagination -->
+                <!-- Add Arrows -->
+
+            </div>
+        </div>
+    </div>
+</div>

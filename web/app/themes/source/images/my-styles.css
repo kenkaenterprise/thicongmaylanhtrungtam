@@ -1,0 +1,296 @@
+@charset "utf-8"; /*==========  Mobile First Method  ==========*/
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+  #company-slogan {
+    display:none;
+  }
+  #hotline {
+    display:none;
+  }
+  #company-name {
+    display: none;
+  }
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+  #logo_bct img {
+    max-width:30%;
+  }
+  #company-slogan {
+    display:none;
+  }
+  #hotline {
+    display:none;
+  }
+  #company-name {
+    display: none;
+  }
+  #site-logo img {
+    display: inline-block;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (min-width : 568px) {
+  #company-slogan {
+    display:none;
+  }
+  #hotline {
+    display:none;
+  }
+  #company-name {
+    display: none;
+  }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+ /* #company-slogan {
+    display:block;
+  }
+  #hotline {
+    display:block;
+  }
+  #company-name {
+    display: block;
+  }*/
+}
+
+@media only screen and (min-width : 800px) {
+ /* #company-slogan {
+    display:block;
+  }
+  #hotline {
+    display:block;
+  }
+  #company-name {
+    display: block;
+  }*/
+   #logo_bct img {
+    max-width:30%;
+  }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+  #company-slogan {
+    display:block;
+  }
+  #hotline {
+    display:block;
+  }
+  #company-name {
+    display: block;
+  }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 1024px) {
+   #logo_bct img {
+    max-width:100%;
+  }
+}
+
+@media only screen and (min-width : 1400px) {
+  #wrapper_main {
+   /* max-width: 1349px; */
+    margin: 0 auto;
+  }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+   #logo_bct img {
+    max-width:100%;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+.hotrokh-box{display: none;}
+  .container{width: 100%}
+
+.timkiem{
+  max-width: 320px;
+  background-position: left -190px top;
+}
+.main-nav>ul>li> a{
+  padding: 13px 11px;
+}
+#slideshow{
+  width: 500px;
+}
+.dmsp-panel{
+  width: calc(100% - 500px);
+}
+.ft-info{
+  max-width: 440px;
+}
+.ft-baiviet{
+  max-width: 330px;
+}
+}
+
+@media only screen and (max-width: 1023px) {
+  .muctuvan{display: block;}
+  #thongketruycap li p span{}
+  .xemchitiet{
+  font-size: 58%;
+  padding: 10px;
+}
+  .first-news,.sub-news{float: none;width: 100%;}
+  .tinnb-it{/* width: 100% */}
+  .tinsukien-bg{
+  padding: 15px 0;
+}
+  .dmsp-panel{/* display: none; */width: 100%;float: none;}
+  
+  .ft-info {float: none;width: 100%}
+  .ft-baiviet {float: none;width: 100%}
+  .ft-thongke {float: none;width: 100%}
+  #thongketruycap li p span{
+  width: 120px;
+}
+  #slideshow{float: none;width: 100%}
+  #slideshow .swiper-slide img{width: 100%}
+  .thuonghieu-bg{/* display: none; */}
+  .ft-bottom{display: none;}
+  .maxh{display: none;}
+  .logo{max-width: 20%;}
+  .banner{
+    /* left: 100px; */
+    max-width: 70%;
+  }
+  .timkiem{
+    display: none;
+  }
+  .company-i{
+    /* left: 102px; */
+    /* top: 25px; */
+    /* max-width: 73%; */
+    /* display: none; */
+  }
+  .company-i p{
+  /* font-size: 0.7em; */
+  margin-bottom: 5px;
+}
+  header>.container {/* height: 80px; */}header{-webkit-background-size: 100% 100% !important;background-size: 100% 100% !important;margin-top: 64px;}
+  #hd-mobile,.search-mobi{display: block;}
+  
+  aside{display: none;}.inner-container{width: 100%;float: none;}
+  
+  #w_menu_mobile{display: block;}
+  #wrapper_main {overflow: hidden;}
+  .pr-box h3{
+  font-size: 90%;
+  line-height: 1.2em;
+}
+}
+
+@media screen and (min-width: 500px) and (max-width: 1000px) {
+}
+
+@media only screen and (max-width: 992px) {
+  .banner{
+  top: 2px;
+}
+.hotrokh-box:before{width: 0;}
+  .hotrokh-box{
+  padding-left: 10px;
+  top: 60px;
+  display: block;
+}
+.hotrokh-box .tit{
+  font-size: 0.6em;
+}
+.hotrokh-box a{
+  font-size: 0.9em;
+}  
+  .combomobile{display: block;}
+  .copyright-wrap{padding-bottom: 30px}
+  .nav-bg{display: none;}
+  .hot-contact{display:none;}
+}
+
+@media only screen and (max-width: 767px) {
+   .hotrokh-box{top: 30px;}
+.dmsp-panel figure{width:50%}
+    .company-i p{
+  font-size: 0.7em;
+  margin-bottom: 5px;
+}
+.company-i{
+    left: 102px;
+    top: 25px;
+    max-width: 73%;
+    /* display: none; */
+  }  
+.banner {
+  /* left: 102px; */
+  /* top: 5px; */
+}
+header>.container {
+  height: 87px;
+}
+.tinnb-it {
+  width: 100%;
+}
+.news-item{width: 100%;}
+.thuonghieu-bg figure{
+  width: 20%;
+}
+}
+
+@media only screen and (max-width: 670px) {
+}
+
+@media only screen and (max-width : 667px) {
+.banner {
+  left: 152px;
+  top: 5px;
+}
+.company-i {
+  left: 152px;
+  top: 39px;
+  max-width: 73%;
+  /* display: none; */
+}
+}
+
+@media only screen and (max-width: 500px) {
+}
+
+@media only screen and (max-width : 479px) {
+  .dvnoibat-item .imgsp,.dvnoibat-item .info{width: 100%;float: none;}
+.pr-box{width: 50%}
+.company-i{
+    left: 102px;
+    top: 25px;
+    max-width: 73%;
+    /* display: none; */
+  }  
+.banner {
+  left: 102px;
+  /* top: 5px; */
+}
+}
+
+@media only screen and (max-width: 374px) {
+  .thuonghieu-bg figure{
+  width: 33.33%;
+}
+  .company-i p {
+  font-size: 0.7em;
+  }
+.company-i{
+  left: 83px;
+}
+.banner{
+  max-width: 63%;
+  left: 83px;
+}
+  .pr-box {
+    /* width: 100%; */
+  }
+}
+

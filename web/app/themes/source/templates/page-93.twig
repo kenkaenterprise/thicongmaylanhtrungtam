@@ -1,0 +1,62 @@
+{# /san-pham-noi-bat/ #}
+{% extends 'page.twig' %}
+
+{% block content %}
+    <section id="main" class="">
+        <div class="main-container clearfix">
+            <div class="container">
+                <h6 class="idx-tit text-uppercase"><span><i>Sản phẩm nổi bật</i></span></h6>
+                <div class="clear"></div>
+
+                <div class="d__fl--wrap prs-box">
+                    {% if posts %}
+                        {% for item in posts %}
+                            <div class="pr-box">
+                                <article>
+                                    <figure><a href="{{ item.link }}"><img src="{{ item.thumbnail.src?:'https://via.placeholder.com/300x250' }}" alt="{{ item.name }}"></a></figure>
+                                    <div class="info">
+                                        <p class="features clearfix">
+
+                                            <span class="hp">{{ item.hp }}</span>        <span class="inv"></span>      </p>
+                                        <h3><a href="{{ item.link }}">{{ item.name }}</a></h3>
+                                        <p class="gia">{{ item.price ?: 'GIÁ LIÊN HỆ' }}</p>
+                                        <a href="{{ item.link }}" class="xemchitiet">XEM CHI TIẾT <i class="fa fa-plus" aria-hidden="true"></i></a>
+                                        <marquee scrollamount="3">Liên hệ mua hàng - {{ theme_settings.settings.phone3 }}</marquee>
+                                    </div>
+                                </article>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="clear"></div>
+                <div class="paging">
+                    <div class="tool-pagination">
+                        <ul class="pagination2">
+                            {% if posts.pagination.prev %}
+                                <li>
+                                    <a href="{{posts.pagination.prev.link}}" class="prev {{posts.pagination.prev.link|length ? '' : 'invisible'}}">Trang trước</a>
+                                </li>
+                            {% endif %}
+                            {% for page in posts.pagination.pages %}
+                                <li>
+                                    {% if page.link %}
+                                        <a href="{{page.link}}" class="{{page.class}}">{{page.title}}</a>
+                                    {% else %}
+                                        <a class="current">{{page.title}}</a>
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                            {% if posts.pagination.next %}
+                            <li>
+                                <a href="{{posts.pagination.next.link}}" class="next {{posts.pagination.next.link|length ? '' : 'invisible'}}">Trang tiếp</a>
+                            </li>
+                        </ul>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+{% endblock %}

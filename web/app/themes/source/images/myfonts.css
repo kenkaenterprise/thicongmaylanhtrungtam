@@ -1,0 +1,52 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: 'MYRIADPROREGULAR';
+    src: url('../assets/fonts/MYRIADPROREGULAR.eot');
+    src: url('../assets/fonts/MYRIADPROREGULAR.eot') format('embedded-opentype'),
+         url('../assets/fonts/MYRIADPROREGULAR.woff2') format('woff2'),
+         url('../assets/fonts/MYRIADPROREGULAR.woff') format('woff'),
+         url('../assets/fonts/MYRIADPROREGULAR.ttf') format('truetype'),
+         url('../assets/fonts/MYRIADPROREGULAR.svg#MYRIADPROREGULAR') format('svg');
+}
+@font-face {
+    font-family: 'SFUClearGothicExtraLightOblique';
+    src: url('../assets/fonts/SFUClearGothicExtraLightOblique.eot');
+    src: url('../assets/fonts/SFUClearGothicExtraLightOblique.eot') format('embedded-opentype'),
+         url('../assets/fonts/SFUClearGothicExtraLightOblique.woff2') format('woff2'),
+         url('../assets/fonts/SFUClearGothicExtraLightOblique.woff') format('woff'),
+         url('../assets/fonts/SFUClearGothicExtraLightOblique.ttf') format('truetype'),
+         url('../assets/fonts/SFUClearGothicExtraLightOblique.svg#SFUClearGothicExtraLightOblique') format('svg');
+}
+@font-face {
+    font-family: 'SFUClearGothicBold';
+    src: url('../assets/fonts/SFUClearGothicBold.eot');
+    src: url('../assets/fonts/SFUClearGothicBold.eot') format('embedded-opentype'),
+         url('../assets/fonts/SFUClearGothicBold.woff2') format('woff2'),
+         url('../assets/fonts/SFUClearGothicBold.woff') format('woff'),
+         url('../assets/fonts/SFUClearGothicBold.ttf') format('truetype'),
+         url('../assets/fonts/SFUClearGothicBold.svg#SFUClearGothicBold') format('svg');
+}
+@font-face {
+    font-family: 'UTMAvoBold';
+    src: url('../assets/fonts/UTMAvoBold.eot');
+    src: url('../assets/fonts/UTMAvoBold.eot') format('embedded-opentype'),
+         url('../assets/fonts/UTMAvoBold.woff2') format('woff2'),
+         url('../assets/fonts/UTMAvoBold.woff') format('woff'),
+         url('../assets/fonts/UTMAvoBold.ttf') format('truetype'),
+         url('../assets/fonts/UTMAvoBold.svg#UTMAvoBold') format('svg');
+}
+@font-face {
+    font-family: "segoeui";
+    src: url("../assets/fonts/font_main/SVN-Segoe UI.ttf");
+}
+
+@font-face {
+    font-family: "segoeui_bold";
+    src: url("../assets/fonts/font_main/seguisb_0.ttf");
+}
+
+@font-face {
+    font-family: "segoeui_black";
+    src: url("../assets/fonts/font_main/seguibl.ttf");
+}

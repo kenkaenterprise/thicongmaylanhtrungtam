@@ -1,0 +1,75 @@
+<p>
+    <span>
+        <span class="font-sm">
+            <span class="font-big">
+                <strong>{{ theme_settings.settings.company_text }}</strong>
+            </span>
+        </span>
+    </span>
+</p>
+
+<p>
+    <span>
+        <span class="font-normal">
+            <strong>{{ theme_settings.settings.address }}</strong>
+        </span>
+    </span>
+</p>
+
+<p style="display: none;">
+    <span class="font-normal">
+        <strong>
+            <span>Điện thoại : </span>
+            <a href="tel:{{ theme_settings.settings.phone }}" >
+                <span>{{ theme_settings.settings.phone }}</span>
+            </a>
+            <span> - </span>
+            <a href="tel:{{ theme_settings.settings.phone2 }}" >
+                <span>{{ theme_settings.settings.phone2 }}</span>
+            </a>
+        </strong>
+    </span>
+</p>
+
+<p>
+    <span class="font-normal">
+        <span style="font-family: times new roman,times,serif;">
+            <strong>
+                <span>Hotline : </span>
+                <a href="tel:{{ theme_settings.settings.phone3 }}" >
+                    <span>{{ theme_settings.settings.phone3 }}</span>
+                </a>
+                {#<span> - </span>#}
+                {#<a href="tel:{{ theme_settings.settings.hotline2 }}" >
+                    <span>{{ theme_settings.settings.hotline2 }}</span>
+                </a>#}
+            </strong>
+        </span>
+    </span>
+</p>
+
+<p>
+    <span>
+        <span class="font-normal">
+            <strong>Mail : {{ theme_settings.settings.email }}</strong>
+        </span>
+    </span>
+</p>
+
+<p>
+    <span class="font-normal"><strong>
+            <span>Web :</span><a
+                    href="{{ theme_settings.settings.web }}"><span> {{ theme_settings.settings.web }}</span>
+            </a>
+
+            <span>  
+            </span>
+        </strong>
+    </span>
+    <strong class="font-normal"><span> - </span>
+        <a href="{{ theme_settings.settings.web2 }}">
+            <span>{{ theme_settings.settings.web2 }}</span>
+        </a>
+    </strong>
+</p>
+<div class="clear"></div>

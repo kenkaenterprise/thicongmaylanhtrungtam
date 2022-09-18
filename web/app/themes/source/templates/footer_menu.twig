@@ -1,0 +1,90 @@
+<div class="ft-bottom ">
+
+    <div class="container">
+        <div class="clearfix">
+            <ul class="ft-nav list-inline">
+                {% if footer_menu %}
+                    {% for item in footer_menu.items %}
+                        <li><a href="{{ item.url }}">{{ item.name }}</a></li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+            {#{{ fn('d', theme_settings.settings.facebook) }}#}
+            <ul class="maxh maxhft clearfix list-inline ">
+                <p class="title text-uppercase">Liên Kết mạng xã hội </p>
+
+                <li><a href="{{ theme_settings.settings.facebook }}" target="_blank"><img class="hvr-pulse-shrink"
+                                                                                           src="{{ site.theme.link }}/images/iconfb142036x36-5533.png"
+                                                                                           alt="Facebook"/></a></li>
+                <li><a href="{{ theme_settings.settings.google }}" target="_blank"><img
+                                class="hvr-pulse-shrink" src="{{ site.theme.link }}/images/icongg2-6489.png"
+                                alt="gg"/></a></li>
+                <li><a href="{{ theme_settings.settings.twitter }}" target="_blank"><img class="hvr-pulse-shrink"
+                                                                      src="{{ site.theme.link }}/images/icontw2-6509.png"
+                                                                      alt="yt"/></a></li>
+                <li><a href="{{ theme_settings.settings.youtube }}" target="_blank"><img class="hvr-pulse-shrink"
+                                                                      src="{{ site.theme.link }}/images/iconyt2-9455.png"
+                                                                      alt="tw"/></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<footer>
+
+
+    <div class="container">
+        <div class="">
+            <div class="ft-container ">
+                <div class="ft-info ">
+                    {% include 'partial/contact-info.twig' %}
+
+                </div>
+
+                <div class="ft-baiviet">
+
+                    <p class="ft-tit text-uppercase">Danh mục dịch vụ</p>
+                    <ul class="ft-list d__fl--wrap">
+                        {% if footer_menu_2 %}
+                            {% for item in footer_menu_2.items %}
+                                <li class=""><a href="{{ item.url }}">{{ item.name }}</a></li>
+                            {% endfor %}
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="ft-thongke">
+                    <div id="logo_bct">
+                        <a href="http://online.gov.vn/Home/WebDetails/84908?AspxAutoDetectCookieSupport=1" target="_blank">
+                            <img src="https://dienlanhphangia.com/wp-content/themes/wp-bootstrap-4/assets/images/icon_bct.png" alt="">
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="copyright-wrap  ">
+        <div class="container">
+            <div class="">
+
+                <p class="copyright ">Copyright © 2021 thuộc ĐIỆN LẠNH PHAN GIA. Design by KenkaDigit</p>
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+
+</footer>
+<div class="combomobile">
+    <div class="btn-group btn-group-justified text-uppercase">
+
+        <a href="tel:{{ theme_settings.settings.phone3 }}" class="btn btn-danger btn-md"><span class="blink_me"><i class="fa fa-phone"
+                                                                                           aria-hidden="true"></i> Gọi điện</span></a>
+        <a href="sms:{{ theme_settings.settings.phone3 }}" class="btn btn-danger btn-md"><i class="fa fa-commenting-o"
+                                                                    aria-hidden="true"></i> SMS</a>
+        <a href="/lien-he/" class="btn btn-danger btn-md"><i class="fa fa-map-marker" aria-hidden="true"></i> Chỉ
+            đường</a>
+    </div>
+</div>

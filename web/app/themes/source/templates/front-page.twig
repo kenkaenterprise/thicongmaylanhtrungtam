@@ -1,0 +1,119 @@
+{% extends "base.twig" %}
+{% block content %}
+    <section id="main" class="">
+        <div class="main-container clearfix">
+            <div class="dichvunb-bg">
+
+                <div class="container">
+                    <h6 class="idx-tit text-uppercase"><a href="dich-vu.html">Dịch vụ - tin tức nổi bật</a></h6>
+                    <div class="dv-container">
+                        {#{{ fn('d', features) }}#}
+                        {% if features %}
+                            {% for item in features %}
+                                <div class="dvnoibat-item clearfix">
+                                    <a href="{{ item.link }}" class="imgsp"><img src="{{ item.thumbnail.src?: 'https://via.placeholder.com/200x150'}}" alt="{{ item.name }}"></a>
+                                    <div class="info"><h3 class="text-uppercase"><a href="{{ item.link }}">{{ item.name }}</a></h3>
+                                        <div class="desc">{{ item.preview.length(62).force.read_more(false) }}</div>
+                                        <a href="{{ item.link }}" class="btn btn-primary">XEM THÊM</a>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+
+
+                        <div class="paging">
+                            <div class="tool-pagination">
+                                <ul class="pagination2">
+                                    {% if features.pagination.prev %}
+                                        <li>
+                                            <a href="{{features.pagination.prev.link}}" class="prev {{features.pagination.prev.link|length ? '' : 'invisible'}}">Trang trước</a>
+                                        </li>
+                                    {% endif %}
+                                    {% for page in features.pagination.pages %}
+                                        <li>
+                                            {% if page.link %}
+                                                <a href="{{page.link}}" class="{{page.class}}">{{page.title}}</a>
+                                            {% else %}
+                                                <a class="current">{{page.title}}</a>
+                                            {% endif %}
+                                        </li>
+                                    {% endfor %}
+                                    {% if features.pagination.next %}
+                                    <li>
+                                        <a href="{{features.pagination.next.link}}" class="next {{features.pagination.next.link|length ? '' : 'invisible'}}">Trang tiếp</a>
+                                    </li>
+                                </ul>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="yeucau-bg">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="khungbaogia">
+                                <h6 class="idx-tit text-uppercase"><span>Liên kết website</span></h6>
+                                <div class="bao-box">
+                                    <p class="desc">Chọn liên kết cho bạn</p>
+                                    <select class="soflow" onchange="window.open(this.value,'_Blank');">
+                                        <option value="">-- Link liên kết --</option>
+                                        {% if menu_links %}
+                                            {% for item in menu_links.items %}
+                                                <option value="{{ item.link }}">{{ item.name }}</option>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </select>
+                                    <ul>
+                                        {% if menu_links %}
+                                            {% for item in menu_links.items %}
+                                                <li><a href="{{ item.link }}" target="_blank">{{ item.name }}</a></li>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="khunghotro">
+                                <h6 class="idx-tit text-uppercase"><span>Hỗ trợ trực tuyến</span></h6>
+                                <div class="hotlinehotro">
+                                    {% set img_phone_call = 'https://localhost/app/uploads/2021/08/z2663494003687_f5b7255ff24046e7c0d3f68619969820.jpg' %}
+                                    {% if get_theme_setting('img_phone_call') %}
+                                        {% set img_phone_call = get_theme_setting('img_phone_call') %}
+                                    {% endif %}
+                                    <img src="{{ img_phone_call }}" alt="" class="phone-call">
+                                    <div class="hotline-content">
+                                        {% if theme_settings.settings.phone %}
+                                            <p class="clearfix">Tư vấn mua hàng: <a href="tel:+{{ theme_settings.settings.phone3 }}">{{ theme_settings.settings.phone3 }}</a></p>
+                                        {% endif %}
+                                        {% if theme_settings.settings.phone2 %}
+                                            <p class="clearfix">Tư vấn kỹ thuật: <a href="tel:+{{ theme_settings.settings.phone3 }}">{{ theme_settings.settings.phone3 }}</a></p>
+                                        {% endif %}
+                                        {% if theme_settings.settings.email %}
+                                            <p class="email-icon">Email: {{ theme_settings.settings.email }}</p>
+                                        {% endif %}
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+                            <h6 class="idx-tit text-uppercase"><span>fanpage facebook</span></h6>
+                            <div class="fanpageplace">
+                                {% if theme_settings.settings.facebook %}
+                                    <div class="fb-page" data-href="{{ theme_settings.settings.facebook }}" data-width="470" data-height="380" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="{{ theme_settings.settings.facebook }}"><a href="{{ theme_settings.settings.facebook }}">Facebook</a></blockquote></div></div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>    </div>
+    </section>
+{% endblock %}

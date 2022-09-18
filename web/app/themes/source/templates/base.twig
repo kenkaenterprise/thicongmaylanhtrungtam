@@ -1,0 +1,778 @@
+{% block html_head_container %}
+    {% include 'html-header.twig' %}
+{% endblock %}
+<body class="index computer " data-title="index - index" onLoad="">
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v11.0" nonce="4YSCIJzA"></script>
+{#{{ fn('d',site.url) }}#}
+<div id="wrapper_main">
+
+
+    <div class="muctuvan">
+        <div class="container">
+            <form class="form-inline clearfix" method="post" action="{{ site.url }}/index.html">
+                <div class="form-group ">
+
+                    <input type="text" placeholder="Nhập số ĐT để được tư vấn miễn phí" class="form-control"
+                           id="sodttuvan" name="sodttuvan">
+                </div>
+
+
+                <input type="hidden" name="frmsodttuvan" value="1">
+                <button type="submit" class="btn btn-primary">Gửi</button>
+            </form>
+        </div>
+    </div>
+    {% block header %}
+        <header>
+
+            <div class="container" id="header-banner">
+                <div class="row">
+                    <div class="col-md-2 col-sm-12">
+                        <a href="/" id="site-logo">
+                            <img src="{{ logo?:site.theme.link ~ '/images/logo-as-2895.png'}}" alt="logo"/>
+                        </a>
+                    </div>
+                    <div class="col-md-7 text-center my-4">
+                        <p id="company-name" class="chu-noi"> CÔNG TY TNHH ĐIỆN LẠNH PHAN GIA</p>
+                        <p id="company-slogan">Nhà thầu thi công ĐHKK và thông gió Chuyên Nghiệp</p>
+                    </div>
+                    <div class="col-md-3 my-4" id="hotline">
+                        <div class="row">
+                            <div class="col-md-3 px-0 text-md-end">
+                                <div class="icon-phone">
+                                    <img width="70px" src="https://dienlanhphangia.com/wp-content/uploads/giot%20nuoc.png" alt="">
+                                </div>
+                            </div>
+                            <div class="col-md-9 px-0 text-md-start">
+                                <div class="text-phone mx-0">
+                                    <p>Hotline:</p>
+                                    {% if theme_settings.settings.phone3 %}
+                                        <p class="m-0 chu-noi phones">{{ theme_settings.settings.phone3 }}</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </header>
+        <div id="w_menu_mobile">
+            <link type="text/css" rel="stylesheet" href="{{ site.theme.link }}/images/jquery.mmenu.all.css"/>
+            <script type="text/javascript" src="{{ site.theme.link }}/images/jquery.mmenu.min.all.js"></script>
+            <script type="text/javascript">
+                $(function () {
+                    $('nav#menu_mobi').mmenu({
+                        extensions: ['effect-slide-menu', 'pageshadow'],
+                        searchfield: true,
+                        counters: true,
+                        navbar: {
+                            title: 'Menu'
+                        },
+                        navbars: [
+                            {
+                                position: 'top',
+                                content: ['searchfield']
+                            }, {
+                                position: 'top',
+                                content: [
+                                    'prev',
+                                    'title',
+                                    'close'
+                                ]
+                            }, {
+                                position: 'bottom',
+                                content: [
+                                    '<a>Online : 9</a>',
+                                    '<a>Total : 1205860</a>'
+                                ]
+                            }
+                        ]
+                    });
+                });
+            </script>
+            <div class="header"><a href="#menu_mobi">MENU</a></div>
+            <div class="hidden">
+                <nav id="menu_mobi">
+                    <ul>
+                        {% if primary_menu %}
+                            {% for item in primary_menu.items %}
+                                <li class="{% if loop.first %}active{% endif %}">
+                                    <a href="{{ item.url }}">{{ item.name }}</a>
+                                    {% if item.children %}
+                                        <ul>
+                                            {% for sub_item in item.children %}
+                                                <li class=""><a href="{{ sub_item.url }}">{{ sub_item.name }}</a>
+                                                    {% if sub_item.children %}
+                                                        <ul>
+                                                            {% for sub_sub_item in sub_item.children %}
+                                                            <li>
+                                                                <a href="{{ sub_sub_item.url }}">{{ sub_sub_item.name }}</a>
+                                                                {% endfor %}
+                                                            </li>
+                                                        </ul>
+                                                    {% endif %}
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        {% include "menu.twig" with {current_post: post}%}
+        {% include "slider.twig" %}
+    {% endblock %}
+    <div class="o-section container">
+        <ul class="m-breadcrumbs">
+            {% for item in breadcrumbs %}
+                <li class="m-breadcrumbs_item">
+                    <a href="{{ item.link }}">{{ item.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% block content %}{% endblock %}
+    <div class="clear"></div>
+
+
+    <div class="doitac-box">
+        <div class="container">
+            <ul class="timnhieu list-inline">
+
+                <li><span>Tìm kiếm nhiều: </span></li>
+                {% if footer_menu_3 %}
+                    {% for item in footer_menu_3.items %}
+                        <li><a href="{{ item.url }}"><i class="fa fa-circle"
+                                                                                              aria-hidden="true"></i> {{ item.name }}</a></li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+            <div class="">
+                <div class="doitac-bg">
+                    <div class="doitac-main clearfix ">
+                        {% if partners %}
+                            {% for item in partners %}
+                               {#{{ item.thumb.src }}#}
+                                {#{{ fn('d', item.thumbnail.src ) }}#}
+                                <div class="doitac">
+                                    <a href="{{ item.content|striptags }}" target="_blank"><img
+                                                src="{{ item.thumbnail.src ?: site.theme.link ~ '/images/770831975521627_130x73.9375.jpg' }}" alt="{{ item.name }}"
+                                                class="img-responsive"/></a>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.doitac-main').slick({
+                dots: false,
+                autoplay: true,
+                arrows: true,
+                infinite: true,
+                speed: 300,
+                slidesToShow: 6,
+                slidesToScroll: 1,
+                responsive: [
+                    {
+                        breakpoint: 1030,
+                        settings: {
+                            slidesToShow: 6,
+                        }
+                    },
+                    {
+                        breakpoint: 800,
+                        settings: {
+                            slidesToShow: 4,
+                        }
+                    }, {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 2,
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
+    {% block footer_home %}
+        {% include 'footer_menu.twig' %}
+    {% endblock %}
+
+
+</div>
+<script type="text/javascript" src="{{ site.theme.link }}/images/jquery.simplyscroll.min.js"></script>
+<link rel="stylesheet" href="{{ site.theme.link }}/images/jquery.simplyscroll.css" media="all" type="text/css">
+<!-- Swiper JS -->
+<script src="{{ site.theme.link }}/images/swiper.min.js"></script>
+<!-- Initialize Swiper -->
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        // pagination: '.swiper-pagination',
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        loop: true,
+        effect: 'fade',
+        paginationClickable: true,
+        autoplay: 2500,
+        speed: 1000,
+        autoplayDisableOnInteraction: false
+    });
+</script>
+<script src="{{ site.theme.link }}/images/masonry.pkgd.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="{{ site.theme.link }}/images/myscript.js"></script>
+<script>
+    $(function () {
+        // $("aside").stick_in_parent();
+        // $('aside').attr('data-offset-bottom',$('footer').offset().top);
+        // if ($(window).width() >= 1024) {
+        // $(window).bind('scroll', function() {
+        // console.log($(window).scrollTop());
+        // if ($(window).scrollTop() > ($('footer').offset().top - 400)) {
+        // $('aside').addClass('nostick');
+        // }
+        // else {
+        // $('aside').removeClass('nostick');
+        // }
+        // })
+        // }
+        // if ($(window).width() >= 1024) {
+        // $(window).bind('scroll', function() {
+        // if ($(window).scrollTop() > 120) {
+        // $('.nav-bg').addClass('fixed');
+        // }
+        // else {
+        // $('.nav-bg').removeClass('fixed');
+        // }
+        // });
+        // }
+        /*BACKTOP*/
+        $('body').append('<div id="top" ></div>');
+        $(window).scroll(function () {
+            if ($(window).scrollTop() > 100) {
+                $('#top').fadeIn();
+            } else {
+                $('#top').fadeOut();
+            }
+        });
+        $('#top').click(function () {
+            $('html, body').animate({scrollTop: 0}, 500);
+        });
+        $('#btnSearch').click(function (evt) {
+            onSearch(evt);
+        });
+        $('#btnSearch2').click(function (evt) {
+            onSearch2(evt);
+        });
+    });
+
+    function onSearch(evt) {
+        var keyword = document.getElementById('keyword');
+        if (keyword.value == '' || keyword.value === 'Nhập từ khóa cần tìm') {
+            alert('Bạn chưa nhập từ khóa');
+            keyword.focus();
+            return false;
+        }
+        location.href = '{{ site.url }}/tim-kiem.html&keywords=' + keyword.value;
+    }
+
+    function doEnter(evt) {
+        // IE         // Netscape/Firefox/Opera
+        var key;
+        if (evt.keyCode == 13 || evt.which == 13) {
+            onSearch(evt);
+        } else {
+            return false;
+        }
+    }
+
+    function onSearch2(evt) {
+        var keyword = document.getElementById('keyword2');
+        if (keyword.value == '' || keyword.value === 'Nhập từ khóa cần tìm') {
+            alert('Bạn chưa nhập từ khóa');
+            keyword.focus();
+            return false;
+        }
+        location.href = '{{ site.url }}/tim-kiem.html&keywords=' + keyword.value;
+    }
+
+    function doEnter2(evt) {
+        // IE         // Netscape/Firefox/Opera
+        var key;
+        if (evt.keyCode == 13 || evt.which == 13) {
+            onSearch2(evt);
+        } else {
+            return false;
+        }
+    }
+</script>
+<script src="{{ site.theme.link }}/images/bootstrap-notify.min.js"></script>
+<div class="quick-alo-phone quick-alo-green quick-alo-show" id="quick-alo-phoneIcon" style="right: 50px; top: 25%;">
+    <a class="hotline_index" href="tel:{{ theme_settings.settings.phone3 }}">
+        <div class="quick-alo-ph-circle"></div>
+    </a>
+    <a class="hotline_index" href="tel:{{ theme_settings.settings.phone3 }}">
+        <div class="quick-alo-ph-circle-fill"></div>
+    </a>
+    <a class="hotline_index" href="tel:{{ theme_settings.settings.phone3 }}">
+        <div class="quick-alo-ph-img-circle"></div>
+    </a>
+</div>
+<style>
+    .blink_me {
+        -webkit-animation-name: blinker;
+        -webkit-animation-duration: 1s;
+        -webkit-animation-timing-function: linear;
+        -webkit-animation-iteration-count: infinite;
+
+        -moz-animation-name: blinker;
+        -moz-animation-duration: 1s;
+        -moz-animation-timing-function: linear;
+        -moz-animation-iteration-count: infinite;
+
+        animation-name: blinker;
+        animation-duration: 1s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+
+    @-moz-keyframes blinker {
+        0% {
+            opacity: 1.0;
+        }
+        50% {
+            opacity: 0.0;
+        }
+        100% {
+            opacity: 1.0;
+        }
+    }
+
+    @-webkit-keyframes blinker {
+        0% {
+            opacity: 1.0;
+        }
+        50% {
+            opacity: 0.0;
+        }
+        100% {
+            opacity: 1.0;
+        }
+    }
+
+    @keyframes blinker {
+        0% {
+            opacity: 1.0;
+        }
+        50% {
+            opacity: 0.0;
+        }
+        100% {
+            opacity: 1.0;
+        }
+    }
+
+    /*phone*/
+    .quick-alo-phone.quick-alo-show {
+        visibility: visible;
+    }
+
+    .quick-alo-phone {
+        position: fixed;
+        visibility: hidden;
+        background-color: transparent;
+        /* width: 200px;
+         height: 200px;*/
+        width: 82px;
+        height: 64px;
+        cursor: pointer;
+        z-index: 200000 !important;
+        -webkit-backface-visibility: hidden;
+        -webkit-transform: translateZ(0);
+        -webkit-transition: visibility .5s;
+        -moz-transition: visibility .5s;
+        -o-transition: visibility .5s;
+        transition: visibility .5s;
+        right: 150px;
+        top: 30px;
+    }
+
+    .quick-alo-phone.quick-alo-green .quick-alo-ph-circle {
+        border-color: #00aff2;
+        border-color: #bfebfc 9;
+        opacity: .5;
+    }
+
+    .quick-alo-ph-circle {
+        width: 160px;
+        height: 160px;
+        top: 20px;
+        left: 20px;
+        position: absolute;
+        background-color: transparent;
+        -webkit-border-radius: 100%;
+        -moz-border-radius: 100%;
+        border-radius: 100%;
+        border: 2px solid rgba(30, 30, 30, 0.4);
+        border: 2px solid #bfebfc 9;
+        opacity: .1;
+        -webkit-animation: quick-alo-circle-anim 1.2s infinite ease-in-out;
+        -moz-animation: quick-alo-circle-anim 1.2s infinite ease-in-out;
+        -ms-animation: quick-alo-circle-anim 1.2s infinite ease-in-out;
+        -o-animation: quick-alo-circle-anim 1.2s infinite ease-in-out;
+        animation: quick-alo-circle-anim 1.2s infinite ease-in-out;
+        -webkit-transition: all .5s;
+        -moz-transition: all .5s;
+        -o-transition: all .5s;
+        transition: all .5s;
+        -webkit-transform-origin: 50% 50%;
+        -moz-transform-origin: 50% 50%;
+        -ms-transform-origin: 50% 50%;
+        -o-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+    }
+
+    .quick-alo-phone.quick-alo-green .quick-alo-ph-circle-fill {
+        background-color: rgba(0, 175, 242, 0.5);
+        background-color: #a6e3fa 9;
+        opacity: .75 !important;
+    }
+
+    .quick-alo-ph-circle-fill {
+        width: 100px;
+        height: 100px;
+        top: 50px;
+        left: 50px;
+        position: absolute;
+        background-color: #000;
+        -webkit-border-radius: 100%;
+        -moz-border-radius: 100%;
+        border-radius: 100%;
+        border: 2px solid transparent;
+        opacity: .1;
+        -webkit-animation: quick-alo-circle-fill-anim 2.3s infinite ease-in-out;
+        -moz-animation: quick-alo-circle-fill-anim 2.3s infinite ease-in-out;
+        -ms-animation: quick-alo-circle-fill-anim 2.3s infinite ease-in-out;
+        -o-animation: quick-alo-circle-fill-anim 2.3s infinite ease-in-out;
+        animation: quick-alo-circle-fill-anim 2.3s infinite ease-in-out;
+        -webkit-transition: all .5s;
+        -moz-transition: all .5s;
+        -o-transition: all .5s;
+        transition: all .5s;
+        -webkit-transform-origin: 50% 50%;
+        -moz-transform-origin: 50% 50%;
+        -ms-transform-origin: 50% 50%;
+        -o-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+    }
+
+    * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    .quick-alo-phone.quick-alo-green .quick-alo-ph-img-circle {
+        background-color: rgb(41, 149, 211);
+    }
+
+    .quick-alo-ph-img-circle {
+        width: 60px;
+        height: 60px;
+        top: 70px;
+        color: red;
+        font-size: 20px;
+        font-family: RobotoBold;
+        left: 70px;
+        position: absolute;
+        background: rgba(30, 30, 30, 0.1) url("{{ site.theme.link }}/images/message503.png") no-repeat center center;
+        -webkit-border-radius: 100%;
+        -moz-border-radius: 100%;
+        border-radius: 100%;
+        border: 2px solid transparent;
+        opacity: .7;
+        -webkit-animation: quick-alo-circle-img-anim 1s infinite ease-in-out;
+        -moz-animation: quick-alo-circle-img-anim 1s infinite ease-in-out;
+        -ms-animation: quick-alo-circle-img-anim 1s infinite ease-in-out;
+        -o-animation: quick-alo-circle-img-anim 1s infinite ease-in-out;
+        animation: quick-alo-circle-img-anim 1s infinite ease-in-out;
+        -webkit-transform-origin: 50% 50%;
+        -moz-transform-origin: 50% 50%;
+        -ms-transform-origin: 50% 50%;
+        -o-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+    }
+
+    .quick-alo-phone.quick-alo-green.quick-alo-hover .quick-alo-ph-img-circle, .quick-alo-phone.quick-alo-green:hover .quick-alo-ph-img-circle {
+        background-color: #75eb50;
+    }
+
+    @-moz-keyframes quick-alo-circle-anim {
+        0% {
+            -moz-transform: rotate(0) scale(.5) skew(1deg);
+            opacity: .1;
+            -moz-opacity: .1;
+            -webkit-opacity: .1;
+            -o-opacity: .1
+        }
+        30% {
+            -moz-transform: rotate(0) scale(.7) skew(1deg);
+            opacity: .5;
+            -moz-opacity: .5;
+            -webkit-opacity: .5;
+            -o-opacity: .5
+        }
+        100% {
+            -moz-transform: rotate(0) scale(1) skew(1deg);
+            opacity: .6;
+            -moz-opacity: .6;
+            -webkit-opacity: .6;
+            -o-opacity: .1
+        }
+    }
+
+    @-webkit-keyframes quick-alo-circle-anim {
+        0% {
+            -webkit-transform: rotate(0) scale(.5) skew(1deg);
+            -webkit-opacity: .1
+        }
+        30% {
+            -webkit-transform: rotate(0) scale(.7) skew(1deg);
+            -webkit-opacity: .5
+        }
+        100% {
+            -webkit-transform: rotate(0) scale(1) skew(1deg);
+            -webkit-opacity: .1
+        }
+    }
+
+    @-o-keyframes quick-alo-circle-anim {
+        0% {
+            -o-transform: rotate(0) kscale(.5) skew(1deg);
+            -o-opacity: .1
+        }
+        30% {
+            -o-transform: rotate(0) scale(.7) skew(1deg);
+            -o-opacity: .5
+        }
+        100% {
+            -o-transform: rotate(0) scale(1) skew(1deg);
+            -o-opacity: .1
+        }
+    }
+
+    @-moz-keyframes quick-alo-circle-fill-anim {
+        0% {
+            -moz-transform: rotate(0) scale(.7) skew(1deg);
+            opacity: .2
+        }
+        50% {
+            -moz-transform: rotate(0) -moz-scale(1) skew(1deg);
+            opacity: .2
+        }
+        100% {
+            -moz-transform: rotate(0) scale(.7) skew(1deg);
+            opacity: .2
+        }
+    }
+
+    @-webkit-keyframes quick-alo-circle-fill-anim {
+        0% {
+            -webkit-transform: rotate(0) scale(.7) skew(1deg);
+            opacity: .2
+        }
+        50% {
+            -webkit-transform: rotate(0) scale(1) skew(1deg);
+            opacity: .2
+        }
+        100% {
+            -webkit-transform: rotate(0) scale(.7) skew(1deg);
+            opacity: .2
+        }
+    }
+
+    @-o-keyframes quick-alo-circle-fill-anim {
+        0% {
+            -o-transform: rotate(0) scale(.7) skew(1deg);
+            opacity: .2
+        }
+        50% {
+            -o-transform: rotate(0) scale(1) skew(1deg);
+            opacity: .2
+        }
+        100% {
+            -o-transform: rotate(0) scale(.7) skew(1deg);
+            opacity: .2
+        }
+    }
+
+    @-moz-keyframes quick-alo-circle-img-anim {
+        0% {
+            transform: rotate(0) scale(1) skew(1deg)
+        }
+        10% {
+            -moz-transform: rotate(-25deg) scale(1) skew(1deg)
+        }
+        20% {
+            -moz-transform: rotate(25deg) scale(1) skew(1deg)
+        }
+        30% {
+            -moz-transform: rotate(-25deg) scale(1) skew(1deg)
+        }
+        40% {
+            -moz-transform: rotate(25deg) scale(1) skew(1deg)
+        }
+        50% {
+            -moz-transform: rotate(0) scale(1) skew(1deg)
+        }
+        100% {
+            -moz-transform: rotate(0) scale(1) skew(1deg)
+        }
+    }
+
+    @-webkit-keyframes quick-alo-circle-img-anim {
+        0% {
+            -webkit-transform: rotate(0) scale(1) skew(1deg)
+        }
+        10% {
+            -webkit-transform: rotate(-25deg) scale(1) skew(1deg)
+        }
+        20% {
+            -webkit-transform: rotate(25deg) scale(1) skew(1deg)
+        }
+        30% {
+            -webkit-transform: rotate(-25deg) scale(1) skew(1deg)
+        }
+        40% {
+            -webkit-transform: rotate(25deg) scale(1) skew(1deg)
+        }
+        50% {
+            -webkit-transform: rotate(0) scale(1) skew(1deg)
+        }
+        100% {
+            -webkit-transform: rotate(0) scale(1) skew(1deg)
+        }
+    }
+
+    @-o-keyframes quick-alo-circle-img-anim {
+        0% {
+            -o-transform: rotate(0) scale(1) skew(1deg)
+        }
+        10% {
+            -o-transform: rotate(-25deg) scale(1) skew(1deg)
+        }
+        20% {
+            -o-transform: rotate(25deg) scale(1) skew(1deg)
+        }
+        30% {
+            -o-transform: rotate(-25deg) scale(1) skew(1deg)
+        }
+        40% {
+            -o-transform: rotate(25deg) scale(1) skew(1deg)
+        }
+        50% {
+            -o-transform: rotate(0) scale(1) skew(1deg)
+        }
+        100% {
+            -o-transform: rotate(0) scale(1) skew(1deg)
+        }
+    }
+
+    @-moz-keyframes fadeInRight {
+        0% {
+            opacity: 0;
+            -webkit-transform: translate3d(100%, 0, 0);
+            -ms-transform: translate3d(100%, 0, 0);
+            transform: translate3d(100%, 0, 0)
+        }
+        100% {
+            opacity: 1;
+            -webkit-transform: none;
+            -ms-transform: none;
+            transform: none
+        }
+    }
+
+    @-webkit-keyframes fadeInRight {
+        0% {
+            opacity: 0;
+            -webkit-transform: translate3d(100%, 0, 0);
+            -ms-transform: translate3d(100%, 0, 0);
+            transform: translate3d(100%, 0, 0)
+        }
+        100% {
+            opacity: 1;
+            -webkit-transform: none;
+            -ms-transform: none;
+            transform: none
+        }
+    }
+
+    @-o-keyframes fadeInRight {
+        0% {
+            opacity: 0;
+            -webkit-transform: translate3d(100%, 0, 0);
+            -ms-transform: translate3d(100%, 0, 0);
+            transform: translate3d(100%, 0, 0)
+        }
+        100% {
+            opacity: 1;
+            -webkit-transform: none;
+            -ms-transform: none;
+            transform: none
+        }
+    }
+
+</style>
+<link rel="stylesheet" href="{{ site.theme.link }}/images/messenger.css"/>
+<!-- JS BLOCK-->
+<div class="drag-wrapper">
+    <div data-drag="data-drag" class="thing xclick" style="transform: translate(1190px, 20px);">
+        <a class="drag_messenger_button toby_tooltip" data-original-title="Chat Facebook">
+            <div class="circle facebook-messenger-avatar">
+                <img class="facebook-messenger-avatar" src="{{ site.theme.link }}/images/msg-icon.png">
+            </div>
+        </a>
+        <div class="content" style="display: none; max-height: 563px;">
+            <div class="inside" id="fbmessenger_content">
+                <div class="arrow"></div>
+
+                <div class="fb-page" data-href="https://www.facebook.com/dienlanhphangia/" data-tabs="272" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/dienlanhphangia/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/dienlanhphangia/">CTy TNHH Điện Lạnh Phan Gia</a></blockquote></div>
+            </div>
+        </div>
+    </div>
+    <div class="magnet-zone">
+        <div class="magnet"></div>
+    </div>
+</div>
+<div id="messenger_bg"></div>
+
+<script type="text/javascript" src="{{ site.theme.link }}/images/popup.js"></script>
+<script type="text/javascript" src="{{ site.theme.link }}/images/jquery.event.move.js"></script>
+<script type="text/javascript" src="{{ site.theme.link }}/images/rebound.min.js"></script>
+<script type="text/javascript" src="{{ site.theme.link }}/images/index.js"></script>
+<script type="text/javascript" src="{{ site.theme.link }}/assets/js/custom.js"></script>
+<div id="code-block" class="ct-code-block">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1"><defs><symbol id="FontAwesomeicon-search" viewBox="0 0 26 28"><title>search</title><path d="M18 13c0-3.859-3.141-7-7-7s-7 3.141-7 7 3.141 7 7 7 7-3.141 7-7zM26 26c0 1.094-0.906 2-2 2-0.531 0-1.047-0.219-1.406-0.594l-5.359-5.344c-1.828 1.266-4.016 1.937-6.234 1.937-6.078 0-11-4.922-11-11s4.922-11 11-11 11 4.922 11 11c0 2.219-0.672 4.406-1.937 6.234l5.359 5.359c0.359 0.359 0.578 0.875 0.578 1.406z"></path></symbol><symbol id="FontAwesomeicon-close" viewBox="0 0 22 28"><title>close</title><path d="M20.281 20.656c0 0.391-0.156 0.781-0.438 1.062l-2.125 2.125c-0.281 0.281-0.672 0.438-1.062 0.438s-0.781-0.156-1.062-0.438l-4.594-4.594-4.594 4.594c-0.281 0.281-0.672 0.438-1.062 0.438s-0.781-0.156-1.062-0.438l-2.125-2.125c-0.281-0.281-0.438-0.672-0.438-1.062s0.156-0.781 0.438-1.062l4.594-4.594-4.594-4.594c-0.281-0.281-0.438-0.672-0.438-1.062s0.156-0.781 0.438-1.062l2.125-2.125c0.281-0.281 0.672-0.438 1.062-0.438s0.781 0.156 1.062 0.438l4.594 4.594 4.594-4.594c0.281-0.281 0.672-0.438 1.062-0.438s0.781 0.156 1.062 0.438l2.125 2.125c0.281 0.281 0.438 0.672 0.438 1.062s-0.156 0.781-0.438 1.062l-4.594 4.594 4.594 4.594c0.281 0.281 0.438 0.672 0.438 1.062z"></path></symbol><symbol id="FontAwesomeicon-chevron-up" viewBox="0 0 28 28"><title>chevron-up</title><path d="M26.297 20.797l-2.594 2.578c-0.391 0.391-1.016 0.391-1.406 0l-8.297-8.297-8.297 8.297c-0.391 0.391-1.016 0.391-1.406 0l-2.594-2.578c-0.391-0.391-0.391-1.031 0-1.422l11.594-11.578c0.391-0.391 1.016-0.391 1.406 0l11.594 11.578c0.391 0.391 0.391 1.031 0 1.422z"></path></symbol><symbol id="FontAwesomeicon-facebook" viewBox="0 0 16 28"><title>facebook</title><path d="M14.984 0.187v4.125h-2.453c-1.922 0-2.281 0.922-2.281 2.25v2.953h4.578l-0.609 4.625h-3.969v11.859h-4.781v-11.859h-3.984v-4.625h3.984v-3.406c0-3.953 2.422-6.109 5.953-6.109 1.687 0 3.141 0.125 3.563 0.187z"></path></symbol><symbol id="FontAwesomeicon-instagram" viewBox="0 0 24 28"><title>instagram</title><path d="M16 14c0-2.203-1.797-4-4-4s-4 1.797-4 4 1.797 4 4 4 4-1.797 4-4zM18.156 14c0 3.406-2.75 6.156-6.156 6.156s-6.156-2.75-6.156-6.156 2.75-6.156 6.156-6.156 6.156 2.75 6.156 6.156zM19.844 7.594c0 0.797-0.641 1.437-1.437 1.437s-1.437-0.641-1.437-1.437 0.641-1.437 1.437-1.437 1.437 0.641 1.437 1.437zM12 4.156c-1.75 0-5.5-0.141-7.078 0.484-0.547 0.219-0.953 0.484-1.375 0.906s-0.688 0.828-0.906 1.375c-0.625 1.578-0.484 5.328-0.484 7.078s-0.141 5.5 0.484 7.078c0.219 0.547 0.484 0.953 0.906 1.375s0.828 0.688 1.375 0.906c1.578 0.625 5.328 0.484 7.078 0.484s5.5 0.141 7.078-0.484c0.547-0.219 0.953-0.484 1.375-0.906s0.688-0.828 0.906-1.375c0.625-1.578 0.484-5.328 0.484-7.078s0.141-5.5-0.484-7.078c-0.219-0.547-0.484-0.953-0.906-1.375s-0.828-0.688-1.375-0.906c-1.578-0.625-5.328-0.484-7.078-0.484zM24 14c0 1.656 0.016 3.297-0.078 4.953-0.094 1.922-0.531 3.625-1.937 5.031s-3.109 1.844-5.031 1.937c-1.656 0.094-3.297 0.078-4.953 0.078s-3.297 0.016-4.953-0.078c-1.922-0.094-3.625-0.531-5.031-1.937s-1.844-3.109-1.937-5.031c-0.094-1.656-0.078-3.297-0.078-4.953s-0.016-3.297 0.078-4.953c0.094-1.922 0.531-3.625 1.937-5.031s3.109-1.844 5.031-1.937c1.656-0.094 3.297-0.078 4.953-0.078s3.297-0.016 4.953 0.078c1.922 0.094 3.625 0.531 5.031 1.937s1.844 3.109 1.937 5.031c0.094 1.656 0.078 3.297 0.078 4.953z"></path></symbol></defs></svg>
+    <button onclick="topFunction()" id="back-top" title="Lên đầu trang" style="display: block;">
+        <svg id="svg-fancy_icon"><use xlink:href="#FontAwesomeicon-chevron-up"></use></svg>
+    </button>
+</div>
+
+</body>
+
+
+{% block footer %}
+    {{ fn('wp_footer') }}
+    {% include 'footer.twig' %}
+{% endblock %}

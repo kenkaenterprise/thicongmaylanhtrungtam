@@ -1,0 +1,56 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+    <section id="main" class="container">
+        <div class="main-container clearfix">
+            <div class="">
+                <h2 class="main-title">{{ post.name }}</h2>
+                <div class="container">
+                    <div class="content_box-left">
+                        {{ table_of_content }}
+                        <div class="content">
+                            {{ custom_content }}
+                        </div>
+                    </div>
+                    <div class="content_box-right">
+                        <h2>{{ __('Các tin khác', 'phg') }}</h2>
+                        {% for item in other_posts %}
+                            <div class="other-news">
+                                <div class="other-news_left">
+                                    <a href="{{ item.link }}">
+                                        <img src="{{ item.thumbnail.src }}" width="100%">
+                                    </a>
+                                </div>
+                                <div class="other-news_right">
+                                    <a href="{{ item.link }}"
+                                       title="{{ item.name }}">{{ item.name }}</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="info-title-related-article"><span>{{ __('Các tin khác', 'phg') }}</span></div>
+                <div class="info-related-articles">
+                    <ul class="row my-4 text-center">
+                        {% if relate_posts.found_posts %}
+                            {% for item in relate_posts|slice(0,255) %}
+                                <li class="item col-md-4">
+                                    <img src="{{ item.thumbnail.src }}" width="100%">
+                                    <p class="related-content">
+                                        <a href="{{ item.link }}"
+                                           title="{{ item.name }}">
+                                            <i class="fa fa-angle-double-right"></i> {{ item.name }} <span class="nd-info">({{ item.date|date("d-m-Y") }})</span>
+                                        </a>
+                                    </p>
+                                </li>
+                            {% endfor %}
+                        {% endif %}
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

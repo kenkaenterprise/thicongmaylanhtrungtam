@@ -1,0 +1,43 @@
+<div class="nav-bg ">
+    <div class="container">
+        <div class="main-nav ">
+            <ul class=" clearfix">
+                {% if primary_menu %}
+                    {% for item in primary_menu.items %}
+                        {% set class = '' %}
+                        {% if fn('is_home') %}
+                            {% if loop.first %}
+                                {% set class = 'active' %}
+                            {% endif %}
+                        {% else %}
+                            {% if is_item_active(item, current_post) %}
+                                {% set class = 'active' %}
+                            {% endif %}
+                        {% endif %}
+                        <li {% if class %}class="{{ class }}"{% endif %}>
+                            <a href="{{ item.url }}">{{ item.name }}</a>
+                            {% if item.children %}
+                                <ul>
+                                    {% for sub_item in item.children %}
+                                        <li class=""><a href="{{ sub_item.url }}">{{ sub_item.name }}</a>
+                                            {% if sub_item.children %}
+                                                <ul>
+                                                    {% for sub_sub_item in sub_item.children %}
+                                                    <li>
+                                                        <a href="{{ sub_sub_item.url }}">{{ sub_sub_item.name }}</a>
+                                                        {% endfor %}
+                                                    </li>
+                                                </ul>
+                                            {% endif %}
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </li>
+
+                    {% endfor %}
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
